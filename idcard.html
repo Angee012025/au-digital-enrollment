@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AU Student ID</title>
+<style>
+body{
+    font-family: Arial;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:40px;
+}
+
+/* CARD STYLE */
+.id-card{
+    width:340px;
+    height:215px;
+    border-radius:15px;
+    padding:15px;
+    position:relative;
+    background:linear-gradient(to bottom,#003366,#002244);
+    color:white;
+    overflow:hidden;
+}
+
+/* FRONT */
+.front-header{
+    text-align:center;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.photo{
+    width:80px;
+    height:80px;
+    position:absolute;
+    top:60px;
+    right:15px;
+    border:2px solid white;
+}
+
+.info{
+    margin-top:50px;
+    font-size:13px;
+}
+
+.honor{
+    position:absolute;
+    bottom:15px;
+    left:15px;
+    font-size:12px;
+    color:gold;
+    font-weight:bold;
+}
+
+/* BACK */
+.back{
+    background:white;
+    color:black;
+    border:3px solid #003366;
+}
+
+.signature{
+    position:absolute;
+    bottom:30px;
+    right:15px;
+    text-align:center;
+}
+
+.signature img{
+    width:110px;
+}
+
+.qr{
+    position:absolute;
+    bottom:20px;
+    left:15px;
+}
+
+.footer{
+    position:absolute;
+    bottom:8px;
+    width:100%;
+    text-align:center;
+    font-size:10px;
+}
+
+@media print{
+    body{margin:0;}
+}
+</style>
+</head>
+<body>
+
+<!-- FRONT -->
+<div class="id-card">
+    <div class="front-header">
+        ARELLANO UNIVERSITY<br>
+        STUDENT IDENTIFICATION CARD
+    </div>
+
+    <div class="info">
+        <strong id="idName"></strong><br>
+        ID: <span id="idNumber"></span><br>
+        Strand: <span id="idStrand"></span><br>
+        Section: <span id="idSection"></span>
+    </div>
+
+    <div class="photo">
+        <img id="idPhoto" src="default-avatar.png"
+        style="width:100%;height:100%;object-fit:cover;">
+    </div>
+
+    <div class="honor" id="honorBadge"></div>
+
+</div>
+
+<!-- BACK -->
+<div class="id-card back">
+
+    <strong>School Year:</strong> 2026-2027<br>
+    <strong>Schedule:</strong> <span id="idSchedule"></span><br><br>
+
+    This ID is property of the University.<br>
+    Must be worn at all times inside campus.<br><br>
+
+  
+
+    <div class="footer">
+        Official University Identification Card
+    </div>
+
+</div>
+
+</body>
+</html>

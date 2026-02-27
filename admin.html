@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arellano University | Admin Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ADMIN SPECIFIC STYLING */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--au-blue);
+        }
+        .stat-card h3 { margin: 0; font-size: 14px; color: #666; }
+        .stat-card p { margin: 5px 0 0 0; font-size: 24px; font-weight: bold; color: var(--au-blue); }
+        .btn-approve { background: #28a745; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
+        .btn-reject { background: #dc3545; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<header
+ class="au-header">
+    <h1>Arellano University</h1>
+    <p>Administrator Control Panel</p>
+</header>
+
+<div class="portal-container" style="max-width: 1000px;">
+
+    <div id="adminLoginBox">
+        <form id="adminLoginForm">
+            <h2>Admin Login</h2>
+            <input type="text" id="adminUser" placeholder="Username" required>
+            <input type="password" id="adminPass" placeholder="Password" required>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+    </div>
+
+   <div id="adminDashboard" style="display:none;">
+    <div style="margin-bottom: 20px;">
+    <input type="text" id="adminSearch" placeholder="Search by name or Student ID..." 
+           style="padding: 12px; border: 2px solid #003366; border-radius: 25px;">
+
+    <div class="stats-grid">
+        <div class="stat-card"><h3>Total</h3><p id="statTotal">0</p></div>
+        <div class="stat-card"><h3>Pending</h3><p id="statPending">0</p></div>
+        <div class="stat-card"><h3>Approved</h3><p id="statApproved">0</p></div>
+        <div class="stat-card"><h3>Rejected</h3><p id="statRejected">0</p></div>
+    </div>
+
+    <h3>Student Applications</h3>
+    <div id="studentList"></div>
+
+</div>
+
+
+    <div id="studentList">
+        </div>
+</div>
+</div>
+</div>
+
+<div id="studentList">
+    </div>
+
+<div id="imageModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center; cursor:pointer;" onclick="this.style.display='none'">
+    <img id="modalImg" style="max-width:90%; max-height:90%; border: 5px solid white;">
+</div>
+
+    </div>
+</div>
+
+<footer class="au-footer">
+    © 2026 Arellano University | Admin System
+</footer>
+
+<script src="system.js"></script>
+</body>
+</html>

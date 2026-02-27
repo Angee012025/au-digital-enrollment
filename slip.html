@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AU Enrollment Slip</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 40px; color: #333; }
+        .slip-container { border: 2px solid #003366; padding: 30px; max-width: 600px; margin: auto; position: relative; }
+        .header { text-align: center; border-bottom: 2px solid #ffcc00; padding-bottom: 10px; margin-bottom: 20px; }
+        .photo-box { position: absolute; top: 30px; right: 30px; width: 120px; height: 120px; border: 1px solid #ccc; }
+        .info-row { margin: 12px 0; font-size: 18px; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
+        strong { color: #003366; width: 150px; display: inline-block; }
+        .watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.1; font-size: 80px; color: #003366; pointer-events: none; }
+        ul { padding-left: 20px; }
+        #printBtn { margin-top: 20px; width: 100%; padding: 10px; font-size: 16px; background: #003366; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="slip-container" id="slipContent">
+        <div class="watermark">ARELLANO</div>
+        
+        <div class="header">
+            <h1 style="margin:0; color: #003366;">ARELLANO UNIVERSITY</h1>
+            <p style="margin:5px 0;">Official Enrollment Confirmation Slip</p>
+        </div>
+
+        <div class="photo-box">
+            <img id="slipPhoto" src="" alt="Student Photo" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+
+        <div class="info-row"><strong>Student ID:</strong> <span id="slipID">---</span></div>
+        <div class="info-row"><strong>Full Name:</strong> <span id="slipName">---</span></div>
+        <div class="info-row"><strong>Grade Level:</strong> <span id="slipGrade">---</span></div>
+        <div class="info-row"><strong>Strand:</strong> <span id="slipStrand">---</span></div>
+        <div class="info-row"><strong>Section:</strong> <span id="slipSection">---</span></div>
+        <div class="info-row"><strong>Time Schedule:</strong> <span id="slipSchedule">---</span></div>
+
+        <h3>Subjects</h3>
+        <ul id="slipSubjects"></ul>
+
+        <button class="btn" onclick="generatePrintForm()" style="width: 100%;">🖨️ Print Enrollment Slip</button>
+        <div style="margin-top: 30px; text-align: center; font-style: italic; font-size: 12px;">
+            This is a computer-generated document. No signature is required.
+        </div>
+    </div>
+
+    <script src="system.js"></script>
+</body>
+</html>

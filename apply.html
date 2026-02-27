@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AU | Online Application</title>
+    <style>
+        :root {
+            --au-blue: #003366;
+            --au-gold: #ffcc00;
+            --light-gray: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-gray);
+            margin: 0;
+            display: flex; /* Centers the container */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .au-header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--au-blue);
+        }
+
+        .au-header h1 { margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+
+        .form-container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 550px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--au-blue);
+        }
+
+        .step-section h3 {
+            color: var(--au-blue);
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        input[type="text"], input[type="email"], input[type="date"], select, input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box; /* Crucial for centering */
+            transition: border 0.3s;
+        }
+
+        input:focus { border-color: var(--au-blue); outline: none; }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+
+        .btn-primary { background: var(--au-blue); color: white; }
+        .btn-secondary { background: #6c757d; color: white; }
+        .submit-btn { background: #28a745; color: white; width: 100%; margin-top: 20px; }
+        .btn:hover { opacity: 0.9; }
+
+        .photo-preview {
+            width: 150px; height: 150px;
+            border: 2px dashed var(--au-blue);
+            margin: 15px auto;
+            display: flex; align-items: center; justify-content: center;
+            background: #fafafa; border-radius: 8px; overflow: hidden;
+            font-size: 0.8rem; color: #888;
+        }
+        .photo-preview img { width: 100%; height: 100%; object-fit: cover; }
+
+        .review-box { 
+            background: #f8f9fa; 
+            padding: 20px; 
+            border-radius: 8px; 
+            border-left: 4px solid var(--au-blue);
+        }
+        .review-item { margin-bottom: 10px; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+
+<header class="au-header">
+    <h1>Arellano University</h1>
+    <p>Online Admissions Office</p>
+</header>
+
+<div class="form-container">
+    <form id="enrollForm">
+        
+        <!-- STEP 1 -->
+        <div class="step-section" id="step1">
+            <h3>Step 1: Personal Information</h3>
+            <div class="grid-2">
+                <div>
+                    <label>Surname</label>
+                    <input type="text" id="Surname" placeholder="e.g. Dela Cruz" required>
+                </div>
+                <div>
+                    <label>First Name</label>
+                    <input type="text" id="Firstname" placeholder="e.g. Juan" required>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div>
+                    <label>M.I.</label>
+                    <input type="text" id="MiddleInitial" maxlength="2">
+                </div>
+                <div>
+                    <label>Suffix</label>
+                    <input type="text" id="Suffix" placeholder="Jr. / III">
+                </div>
+            </div>
+            <label>Birthdate</label>
+            <input type="date" id="birthdate" required>
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="name@example.com" required>
+            
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next: Academic Info</button>
+            </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-section" id="step2" style="display:none;">
+            <h3>Step 2: Campus & Academic Info</h3>
+            <label>Select Campus</label>
+            <select id="Campus" required>
+                <option value="">-- Choose Campus --</option>
+                <option value="Main (Legarda)">Main (Legarda)</option>
+                <option value="Pasig (Andres Bonifacio)">Pasig (Andres Bonifacio)</option>
+                <option value="Pasay (Jose Abad Santos)">Pasay (Jose Abad Santos)</option>
+                <option value="Malabon (Elisa Esguerra)">Malabon (Elisa Esguerra)</option>
+            </select>
+
+            <label>Select Strand</label>
+            <select id="Strand" required>
+                <option value="">-- Select Strand --</option>
+                <option value="ABM">ABM (Accountancy, Business, and Management)</option>
+                <option value="HUMSS">HUMSS (Humanities and Social Sciences)</option>
+                <option value="STEM">STEM (Science, Tech, Engineering, Math)</option>
+                <option value="GAS">GAS (General Academic Strand)</option>
+                <option value="TVL - ICT">TVL - ICT</option>
+            </select>
+            
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary" onclick="nextStep(1)">Back</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next: Documents</button>
+            </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-section" id="step3" style="display:none;">
+            <h3>Step 3: Upload Documents</h3>
+            <label>2x2 ID Photo</label>
+            <input type="file" id="studentPhoto" accept="image/*" onchange="previewImage(this)" required>
+            <div class="photo-preview" id="imagePreview"><span>Preview</span></div>
+            
+            <label>Report Card (Form 138)</label>
+            <input type="file" id="docForm138" required>
+
+            <label>Certificate of Good moral</label>
+            <input type="file" id="docGoodMoral" required>
+            
+            <label>PSA Birth Certificate</label>
+            <input type="file" id="docPSA" required>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary" onclick="nextStep(2)">Back</button>
+                <button type="button" class="btn btn-primary" onclick="validateStep3()">Review Application</button>
+            </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="step-section" id="step4" style="display:none;">
+            <h3>Step 4: Review Your Data</h3>
+            <div class="review-box" id="reviewData"></div>
+            
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                <input type="checkbox" required style="width: auto; margin: 0;"> 
+                <span style="font-size: 0.85rem;">I certify that all information is correct.</span>
+            </label>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary" onclick="nextStep(3)">Back</button>
+                <button type="submit" class="btn btn-primary submit-btn">Confirm & Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    // NAVIGATION LOGIC (Kept exactly as you had it)
+    function nextStep(s) {
+        const currentStep = document.querySelector('.step-section[style*="display: block"]');
+        if (currentStep) {
+            const inputs = currentStep.querySelectorAll('input[required], select[required]');
+            let valid = true;
+            inputs.forEach(input => {
+                if(!input.value) {
+                    input.style.borderColor = 'red';
+                    valid = false;
+                } else {
+                    input.style.borderColor = '#ccc';
+                }
+            });
+            const currentId = parseInt(currentStep.id.replace('step', ''));
+            if (s < currentId) valid = true; 
+            if (!valid) { alert("Please fill in all required fields."); return; }
+        }
+        document.querySelectorAll('.step-section').forEach(sec => sec.style.display = 'none');
+        document.getElementById('step' + s).style.display = 'block';
+    }
+
+    // IMAGE PREVIEW
+    function previewImage(input) {
+        const preview = document.getElementById('imagePreview');
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = e => { preview.innerHTML = `<img src="${e.target.result}">`; };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    // UPDATED REVIEW LOGIC (Fixed to match your system requirements)
+    function validateStep3() {
+        const dataDiv = document.getElementById('reviewData');
+        const fname = document.getElementById('Firstname').value;
+        const sname = document.getElementById('Surname').value;
+        const campus = document.getElementById('Campus').value;
+        const strand = document.getElementById('Strand').value;
+        const email = document.getElementById('email').value;
+
+        dataDiv.innerHTML = `
+            <div class="review-item"><strong>Name:</strong> ${sname}, ${fname}</div>
+            <div class="review-item"><strong>Email:</strong> ${email}</div>
+            <div class="review-item"><strong>Campus:</strong> ${campus}</div>
+            <div class="review-item"><strong>Strand:</strong> ${strand}</div>
+            <div class="review-item"><strong>Status:</strong> Ready for ID Generation</div>
+        `;
+        nextStep(4);
+    }
+</script>
+
+<!-- THIS LINK CONNECTS YOUR SYSTEM LOGIC -->
+<script src="System.js"></script>

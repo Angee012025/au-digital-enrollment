@@ -1,0 +1,94 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>AU | Student Portal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <header>
+            <div class="logo-box">
+                <h1 style="margin:0;">AU PORTAL</h1>
+                <p style="margin:0; font-size: 14px; color: var(--au-gold);">Student Information System</p>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="apply.html">New Application</a>
+            </nav>
+        </header>
+
+        <div class="portal-container">
+            
+            <div id="loginBox" class="form-container">
+                <h2 style="color: var(--au-blue); text-align: center;">Student Login</h2>
+                <p style="text-align: center; font-size: 14px; margin-bottom: 20px;">Enter your Student ID and Birthdate Password</p>
+                
+                <form id="loginForm" onsubmit="loginStudent(event)">
+                    <label>Student ID:</label>
+                    <input type="text" id="studentID" placeholder="AU-SHS-2026-XXXX" required>
+                    
+                    <label>Password:</label>
+                    <input type="password" id="password" placeholder="MMDDYYYY" required>
+                    
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Login to Portal</button>
+                </form>
+                <p style="font-size: 12px; margin-top: 15px; text-align: center; color: #666;">
+                    Forgot password? The default is your birthdate (MMDDYYYY).
+                </p>
+            </div>
+
+            <div id="dashboard" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--au-gold); padding-bottom: 10px; margin-bottom: 20px;">
+                    <h2 style="color: var(--au-blue); margin: 0;">Welcome, <span id="displayName">Student</span>!</h2>
+                    <button onclick="location.reload()" class="btn" style="background: #666; padding: 5px 15px; font-size: 12px;">Logout</button>
+                </div>
+
+                <div class="grid-container" style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+                    <div class="card" style="text-align: center; padding: 20px; background: #f9f9f9; border-radius: 10px;">
+                        <div id="userPhoto" style="width: 120px; height: 120px; background: #ddd; margin: 0 auto 15px; border-radius: 50%; overflow: hidden; border: 3px solid var(--au-blue);">
+                            <img src="default-avatar.png" id="displayPhoto" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <h3 id="displayID" style="margin: 5px 0; color: var(--au-blue);">ID: ---</h3>
+                        <p id="displayStatus" style="font-weight: bold; color: green; text-transform: uppercase;">Approved</p>
+                    </div>
+
+                   <div class="card" style="padding: 20px; border-left: 5px solid var(--au-blue);">
+    <h4 style="margin-top: 0;">Enrollment Details</h4>
+
+    <p><strong>Academic Strand:</strong> <span id="displayCourse">---</span></p>
+    <p><strong>Section:</strong> <span id="displaySection">---</span></p>
+    <p><strong>School Year:</strong> 2026 - 2027</p>
+    <p><strong>Semester:</strong> 1st Semester</p>
+    <p><strong>Time Schedule:</strong> <span id="displaySchedule">---</span></p>
+
+    <hr style="margin:20px 0;">
+
+    <h4>Subjects</h4>
+    <ul id="subjectList" style="padding-left: 20px;">
+        <li>---</li>
+    </ul>
+
+    <div style="margin-top: 30px; padding: 15px; background: #e7f3ff; border-radius: 8px;">
+        <p style="margin: 0 0 10px 0; font-size: 14px;">
+            Your enrollment is complete. You may now print your official slip.
+        </p>
+        <button class="btn" onclick="generatePrintForm()" style="width: 100%;">
+            🖨️ Print Enrollment Slip
+        </button>
+        <button class="btn" onclick="generateIDCard()" style="width:100%; margin-top:10px;">
+🎫 Generate Student ID
+</button>
+    </div>
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="system.js"></script>
+    </body>
+    </html>
